@@ -1,9 +1,11 @@
 package com.checkout.shop
 
 import com.checkout.shop.domain.Fruit
+import com.checkout.shop.domain.Offers.*
 
 object Checkout {
 
   def calculateTotal(fruits: List[Fruit]): BigDecimal =
-    fruits.map(_.price).sum
+    val originalPrice = fruits.map(_.price).sum
+    originalPrice - buy1Get1Free(fruits) - threeForTwo(fruits)
 }
