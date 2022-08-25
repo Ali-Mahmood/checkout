@@ -1,5 +1,5 @@
 import com.checkout.shop.Checkout
-import com.checkout.shop.domain.{Apple, Orange}
+import com.checkout.shop.domain.{Apple, Banana, Orange}
 import org.scalatest.flatspec.AnyFlatSpec
 import org.scalatest.matchers.should.Matchers
 
@@ -39,6 +39,30 @@ class CheckoutSpec extends AnyFlatSpec with Matchers {
     val fruits = List(Orange, Orange, Orange, Orange, Apple, Apple, Apple)
 
     Checkout.calculateTotal(fruits) should ===(1.95)
+  }
+
+  it should "Calculate the price of a banana" in {
+    val fruits = List(Banana)
+
+    Checkout.calculateTotal(fruits) should ===(0.20)
+  }
+
+  it should "Apply the buy 1 get 1 free offer for bananas" in {
+    val fruits = List(Banana, Banana)
+
+    Checkout.calculateTotal(fruits) should ===(0.20)
+  }
+
+  it should "Apply the buy 1 get 1 free offer for bananas and apples" in {
+    val fruits = List(Banana, Apple, Apple)
+
+    Checkout.calculateTotal(fruits) should ===(1.20)
+  }
+
+  it should "Apply the buy 1 get 1 free offer for mixed fruits" in {
+    val fruits = List(Banana, Apple, Apple, Banana, Banana, Banana, Banana)
+
+    Checkout.calculateTotal(fruits) should ===(1.60)
   }
 
 }

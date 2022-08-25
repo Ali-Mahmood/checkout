@@ -14,3 +14,8 @@ candidates take a list of strings as input
   1. buy one, get one free on Apples
   2. 3 for the price of 2 on Oranges
 - Update your checkout functions accordingly
+## Step 3: Add Bananas
+- Price of Banana is 20p.
+- Bananas are on buy one get one offer.
+- When Bananas are bought together with Apple cheapest one is
+  free.
